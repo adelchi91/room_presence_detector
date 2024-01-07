@@ -1,0 +1,2 @@
+,clf,clf__logistic__C,clf__logistic__max_iter,clf__logistic__penalty,clf__logistic__solver,mean_test_neg_log_loss,std_test_neg_log_loss,mean_test_roc_auc,std_test_roc_auc,mean_test_brier,std_test_brier
+0,v3.1-optb-logit,0.001,5000,l1,saga,,,,,-0.09563434198037986,0.08256274845194897

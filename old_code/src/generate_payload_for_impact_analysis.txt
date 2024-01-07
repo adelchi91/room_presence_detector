@@ -1,0 +1,95 @@
+import os
+
+import pandas as pd
+
+# Pydantic model import
+from api_gateway.models.validators.smirky_beaver import FinalModel
+from yc_datamarty import extract_snapshot, load_snapshot
+from yc_datamarty.impact_study import BatchAnalysis
+from yc_datamarty.test_cases_generation import DSTestCasesGenerator
+
+# PARAMETERS
+PROJECT = "yc-data-science"
+UNIQUE_SESSION_NAME = "IAMATEST"
+
+PAYLOAD_TEMPLATE_PATH = (
+    "/home/adelchi/workspace/younited_repos/"
+    "yuc.DataScience/products/solvency/pt-form/3.1/src/payload_validation/payload_for_score_team.json"
+)
+
+FORCED_DEFAULTS = [
+    # ["verified_situation"]
+    # ["business_context", "business_unit_code"],
+    # ["business_context", "partner_code"],
+    # ["product", "project_type_code"],
+    # ["product", "maturity_in_months"],
+    # ["product", "borrowed_amount"],
+    # ["partner_specific", "orange_bank_specific", "client_scoring_data", "banking_cotation"],
+    # ["declared_situation", "housing_situation", "housing_status_start_date"],
+    # ["verified_situation", "housing_situation", "housing_status_start_date"],
+    # ["verified_situation", "applicant", "personal", "date_of_birth"],
+    # ["verified_situation", "housing_situation", "housing_code"]
+]
+FORCED_ALIASES = [
+    {
+        "from": "declared_situation_number_of_salaries_per_year",
+        "to": "declared_situation.incomes.number_of_salaries_per_year",
+    },
+    {
+        "from": "verified_situation_number_of_salaries_per_year",
+        "to": "verified_situation.incomes.number_of_salaries_per_year",
+    },
+]
+
+UNIQUE_SESSION_NAME = "payload_for_business_analysis_pt_smirky_beaver"
+
+filter_query = """
+    select
+      request_id,
+      from `yc-data-science.pt.datamart_all_snapshot_pt_rows_demands_2023_08_24`
+    where
+      business_context.business_unit_code = 'PT' and
+      business_context.partner_code = 'YOUNITED' and
+      application_date > '2023-01-01'
+      and application_date < '2023-07-01'
+"""
+
+analysis = BatchAnalysis(
+    base_table_path={"dataset": "yc-data-science.one_datamart", "table": "all"},
+    base_ids_query=filter_query,
+    session_name=UNIQUE_SESSION_NAME,
+)
+
+
+# # Create test-cases generator
+generator = DSTestCasesGenerator(
+    context_name="smirky-beaver",
+    payload_template_path=PAYLOAD_TEMPLATE_PATH,
+    pydantic_model=FinalModel,
+)
+
+# Generate original predictions
+original_payloads = analysis.generate_payloads(
+    payload_set_id="first_analysis",
+    payload_template_path=PAYLOAD_TEMPLATE_PATH,
+    forced_aliases=FORCED_ALIASES,
+    forced_defaults=FORCED_DEFAULTS,
+    overwrite=False,
+)
+
+# # Generate test-cases
+# generator.create_test_cases_inputs(
+#     n_cases=20,
+#     table_path={"dataset": "yc-data-science.pt", "table": "datamart_all_snapshot_pt_2023_08_10"},
+#     temp_table_dataset="yc-data-science.trash",
+#     forced_defaults=FORCED_DEFAULTS,
+#     forced_aliases=FORCED_ALIASES
+# )
+
+
+# Call a local API in order to get its predictions
+generator.get_test_cases_outputs_from_running_api(
+    api_context_name="smirky-beaver",
+    api_url="http://127.0.0.1:5000/data-science-services/v2",
+    overwrite_api_results=False,
+)

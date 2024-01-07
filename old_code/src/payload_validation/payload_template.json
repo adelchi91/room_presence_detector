@@ -1,0 +1,117 @@
+{
+  "business_context": {
+    "partner_code": "47",
+    "business_unit_code": "PT",
+    "business_provider_code": "6"
+  },
+  "contract_reference": "CJE65404176GE3NK",
+  "request_id": "c83D90da-1b0d-dCe7-333f-5eaBBe2bd1Ff",
+  "application_date": "2002-01-03",
+  "declared_situation": {
+    "applicant": {
+      "personal": {
+        "cell_phone_number": "+621297436",
+        "date_of_birth": "2023-06-14",
+        "email": "4b"
+      },
+      "employment_situation": {
+        "sector_code": "",
+        "professional_situation_start_date": "2007-08-13",
+        "professional_situation_code": "UNEMPLOYED",
+        "profession_code": "OPERATOR"
+      }
+    },
+    "marital_situation": {
+      "number_of_dependents": 3,
+      "marital_status_code": "SEPARATED"
+    },
+    "housing_situation": {
+      "housing_status_start_date": "2023-04-01",
+      "housing_code": ""
+    },
+    "address": {
+      "postal_code": ""
+    },
+    "incomes": {
+      "main_net_monthly_income": 404775.29681499023,
+      "number_of_salaries_per_year": 13,
+      "partner_net_monthly_income": 492295.99376724806,
+      "other_net_monthly_income": 383928.17940164567
+    },
+    "expenses": {
+      "rent_amount": 26372.851961758137,
+      "mortgage_amount": 69179.5246369582,
+      "ongoing_credits": {
+        "credit_lines": [
+          {
+            "ongoing_credit_type_code": "",
+            "monthly_amount": 75943.24281971445
+          }
+        ]
+      }
+    },
+    "banking": {
+      "bank_code": "0010",
+      "bank_account_opening_date": "1994-03-12"
+    }
+  },
+  "verified_situation": {
+    "applicant": {
+      "personal": {
+        "cell_phone_number": "+9750937893",
+        "date_of_birth": "2013-01-31",
+        "email": "08"
+      },
+      "employment_situation": {
+        "sector_code": "e",
+        "professional_situation_start_date": "2004-04-16",
+        "professional_situation_code": "PENSION",
+        "profession_code": "DRIVER"
+      }
+    },
+    "marital_situation": {
+      "number_of_dependents": 7,
+      "marital_status_code": "WIDOWED"
+    },
+    "housing_situation": {
+      "housing_status_start_date": "2021-02-09",
+      "housing_code": "24"
+    },
+    "address": {
+      "postal_code": "d3"
+    },
+    "incomes": {
+      "main_net_monthly_income": 358470.6615470226,
+      "number_of_salaries_per_year": 13,
+      "partner_net_monthly_income": 816648.5178371628,
+      "other_net_monthly_income": 995334.0856861396
+    },
+    "expenses": {
+      "rent_amount": 66795.43369302513,
+      "mortgage_amount": 39174.506654997334,
+      "ongoing_credits": {
+        "credit_lines": [
+          {
+            "ongoing_credit_type_code": "",
+            "monthly_amount": 87597.32457075291
+          }
+        ]
+      }
+    },
+    "banking": {
+      "bank_code": "0098",
+      "bank_account_opening_date": "1995-07-06"
+    }
+  },
+  "application_status": {
+    "preapproval": {
+      "preapproval_status": "pre_approved"
+    }
+  },
+  "product": {
+    "borrowed_amount": [
+      22951.12231480027
+    ],
+    "maturity_in_months": 41
+  }
+}
