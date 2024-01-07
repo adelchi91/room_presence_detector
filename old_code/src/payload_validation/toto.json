@@ -1,0 +1,225 @@
+{
+  "business_context": {
+    "partner_code": "de",
+    "business_unit_code": "2b",
+    "business_provider_code": "5f"
+  },
+  "contract_reference": "CEL26186753KH",
+  "request_id": "FEFb6dDA-D1Ad-D1ad-d4A4-C063b48feeCF",
+  "application_date": "2018-10-01",
+  "declared_situation": {
+    "applicant": {
+      "personal": {
+        "cell_phone_number": "+9693243411",
+        "younids": {
+          "email": "",
+          "last_name": "",
+          "maiden_name": "03"
+        },
+        "date_of_birth": "2016-01-28",
+        "maiden_name": "38",
+        "first_name": "",
+        "last_name": "",
+        "fiscal_code": "",
+        "email": "c7",
+        "cell_phone_provider": "5e"
+      },
+      "employment_situation": {
+        "sector_code": "PUBLIC_SECTOR",
+        "professional_situation_start_date": "2020-08-08",
+        "professional_situation_code": "",
+        "profession_code": ""
+      }
+    },
+    "co_applicant": {
+      "personal": {
+        "cell_phone_number": "+836563558",
+        "younids": {
+          "email": "7d",
+          "last_name": "10",
+          "maiden_name": ""
+        },
+        "date_of_birth": "2020-10-21",
+        "maiden_name": "",
+        "first_name": "46",
+        "last_name": "bb",
+        "fiscal_code": "2d",
+        "email": "19",
+        "cell_phone_provider": ""
+      },
+      "employment_situation": {
+        "sector_code": "PRIVATE_SECTOR",
+        "professional_situation_start_date": "2022-03-27",
+        "professional_situation_code": "53",
+        "profession_code": "7"
+      },
+      "has_co_borrower": true
+    },
+    "marital_situation": {
+      "number_of_dependents": 9,
+      "marital_status_code": "DIVORCED"
+    },
+    "housing_situation": {
+      "housing_status_start_date": "2016-12-27",
+      "housing_code": "c1"
+    },
+    "address": {
+      "postal_code": "44"
+    },
+    "incomes": {
+      "main_net_monthly_income": 233383.29164403328,
+      "partner_net_monthly_income": 453137.7899278495,
+      "other_net_monthly_income": 689632.651122073,
+      "family_allowance_income": 127643.39738392383,
+      "housing_assistance_income": 767418.766699818,
+      "pension_allowance_income": 546057.126914938,
+      "social_security_allowance_income": 990578.6537603965,
+      "number_of_salaries_per_year": 56156,
+      "paid_month_code": "29",
+      "number_of_paid_months_per_year": 540315001946596308565360640
+    },
+    "expenses": {
+      "rent_amount": 58594.32816457116,
+      "mortgage_amount": 88008.69671184893,
+      "child_support_payments_amount": 20195.909032604475,
+      "child_care_expenses_amount": 90869.18401795365,
+      "tax_notice_amount": 20134.68075133541,
+      "other_expenses": 52870.99194016501,
+      "ongoing_credits": {
+        "credit_lines": [
+          {
+            "ongoing_credit_type_code": "",
+            "monthly_amount": 6497.17725055321,
+            "ongoing_credit_id": 3
+          }
+        ],
+        "total_amount": 342067.88591813255
+      }
+    },
+    "banking": {
+      "bic": "CEXLYANMU5F",
+      "iban": "KJ48",
+      "bank_name": "",
+      "bank_code": "0036",
+      "bank_account_opening_date": "2016-05-05"
+    }
+  },
+  "verified_situation": {
+    "applicant": {
+      "personal": {
+        "cell_phone_number": "+04605350",
+        "younids": {
+          "email": "",
+          "last_name": "",
+          "maiden_name": ""
+        },
+        "date_of_birth": "2020-05-31",
+        "maiden_name": "60",
+        "first_name": "",
+        "last_name": "b",
+        "fiscal_code": "69",
+        "email": "cd",
+        "cell_phone_provider": "a"
+      },
+      "employment_situation": {
+        "sector_code": "PRIVATE_SECTOR",
+        "professional_situation_start_date": "2014-01-15",
+        "professional_situation_code": "66",
+        "profession_code": "2"
+      }
+    },
+    "co_applicant": {
+      "personal": {
+        "cell_phone_number": "+16465671",
+        "younids": {
+          "email": "65",
+          "last_name": "89",
+          "maiden_name": ""
+        },
+        "date_of_birth": "2009-06-26",
+        "maiden_name": "",
+        "first_name": "",
+        "last_name": "b",
+        "fiscal_code": "75",
+        "email": "",
+        "cell_phone_provider": ""
+      },
+      "employment_situation": {
+        "sector_code": "PUBLIC_SECTOR",
+        "professional_situation_start_date": "2021-05-05",
+        "professional_situation_code": "",
+        "profession_code": ""
+      },
+      "has_co_borrower": true
+    },
+    "marital_situation": {
+      "number_of_dependents": 6,
+      "marital_status_code": "SEPARATED"
+    },
+    "housing_situation": {
+      "housing_status_start_date": "2022-12-31",
+      "housing_code": ""
+    },
+    "address": {
+      "postal_code": "c3"
+    },
+    "incomes": {
+      "main_net_monthly_income": 53529.4806234089,
+      "partner_net_monthly_income": 718474.1167657285,
+      "other_net_monthly_income": 206542.59114765128,
+      "family_allowance_income": 620872.0619751078,
+      "housing_assistance_income": 342486.8366474242,
+      "pension_allowance_income": 977880.4711047617,
+      "social_security_allowance_income": 356247.0524023197,
+      "number_of_salaries_per_year": 719804,
+      "paid_month_code": "7d",
+      "number_of_paid_months_per_year": 9733870204662823928444485632
+    },
+    "expenses": {
+      "rent_amount": 10635.081176410898,
+      "mortgage_amount": 33076.53864339192,
+      "child_support_payments_amount": 41395.25086666953,
+      "child_care_expenses_amount": 29020.997048344456,
+      "tax_notice_amount": 16901.034881262665,
+      "other_expenses": 65582.08911926585,
+      "ongoing_credits": {
+        "credit_lines": [
+          {
+            "ongoing_credit_type_code": "cb",
+            "monthly_amount": 88672.34452744688,
+            "ongoing_credit_id": 1
+          }
+        ],
+        "total_amount": 844008.4361179938
+      }
+    },
+    "banking": {
+      "bic": "CEZCZPGF",
+      "iban": "VT51",
+      "bank_name": "ae",
+      "bank_code": "NO_BANK",
+      "bank_account_opening_date": "2020-07-23"
+    }
+  },
+  "application_status": {
+    "preapproval": {
+      "preapproval_status": "",
+      "preapproval_reason": "0f"
+    },
+    "granting": {
+      "decision_status": "granted",
+      "decision_reason": ""
+    },
+    "financial": {
+      "unpaid_amount": 9.774964941921277e+27
+    }
+  },
+  "product": {
+    "borrowed_amount": [
+      68999.99652301463
+    ],
+    "maturity_in_months": [
+      115
+    ]
+  }
+}

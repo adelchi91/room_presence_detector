@@ -1,0 +1,14 @@
+{
+  "forced_defaults": [
+  ],
+  "forced_aliases": [
+   {
+        "from": "declared_situation_number_of_salaries_per_year",
+        "to": "declared_situation.incomes.number_of_salaries_per_year"
+    },
+    {
+        "from": "verified_situation_number_of_salaries_per_year",
+        "to": "verified_situation.incomes.number_of_salaries_per_year"
+    }
+  ]
+}

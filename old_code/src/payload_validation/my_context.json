@@ -1,0 +1,116 @@
+{
+  "business_context": {
+    "partner_code": "3",
+    "business_unit_code": "b2",
+    "business_provider_code": "5e"
+  },
+  "contract_reference": "CZD30447564VL",
+  "request_id": "6e5f4E0b-5296-Da8C-2aa9-cFC1A978033b",
+  "application_date": "1995-11-24",
+  "verified_situation": {
+    "applicant": {
+      "personal": {
+        "cell_phone_number": "+1417310810",
+        "younids": {
+          "email": "",
+          "last_name": "",
+          "maiden_name": "d2"
+        },
+        "date_of_birth": "2020-01-20",
+        "maiden_name": "9",
+        "first_name": "bd",
+        "last_name": "f1",
+        "fiscal_code": "f7",
+        "email": "yhunt@yahoo.com",
+        "cell_phone_provider": "d9"
+      },
+      "employment_situation": {
+        "sector_code": "PUBLIC_SECTOR",
+        "professional_situation_start_date": "2022-05-23",
+        "professional_situation_code": "",
+        "profession_code": "14"
+      }
+    },
+    "co_applicant": {
+      "personal": {
+        "cell_phone_number": "+540070911",
+        "younids": {
+          "email": "06",
+          "last_name": "f6",
+          "maiden_name": ""
+        },
+        "date_of_birth": "2021-08-05",
+        "maiden_name": "",
+        "first_name": "7",
+        "last_name": "",
+        "fiscal_code": "",
+        "email": "sergio95@yahoo.com",
+        "cell_phone_provider": ""
+      },
+      "employment_situation": {
+        "sector_code": "PRIVATE_SECTOR",
+        "professional_situation_start_date": "2020-12-29",
+        "professional_situation_code": "68",
+        "profession_code": "78"
+      }
+    },
+    "marital_situation": {
+      "number_of_dependents": 16,
+      "marital_status_code": "COHABITING"
+    },
+    "housing_situation": {
+      "housing_status_start_date": "1996-03-03",
+      "housing_code": "4b"
+    },
+    "address": {
+      "postal_code": "b8"
+    },
+    "incomes": {
+      "main_net_monthly_income": 313750.7470746186,
+      "partner_net_monthly_income": 188072.935439758,
+      "other_net_monthly_income": 634528.2300724381,
+      "family_allowance_income": 706578.9401493428,
+      "housing_assistance_income": 546716.4967826601,
+      "pension_allowance_income": 864686.0958894772,
+      "social_security_allowance_income": 76489.57694714543,
+      "number_of_salaries_per_year": 11515,
+      "number_of_paid_months_per_year": 5539167274236643627468062720
+    },
+    "expenses": {
+      "rent_amount": 66543.79550878333,
+      "mortgage_amount": 67909.23768879223,
+      "child_support_payments_amount": 7323.549400205587,
+      "child_care_expenses_amount": 15159.87907647941,
+      "tax_notice_amount": 19470.56497942451,
+      "other_expenses": 10221.203769583088,
+      "ongoing_credits": {
+        "credit_lines": [
+          {
+            "ongoing_credit_type_code": "c1",
+            "monthly_amount": 35465.50126972644
+          }
+        ],
+        "total_amount": 709898.634489765
+      }
+    },
+    "banking": {
+      "bic": "UCURSQGY",
+      "iban": "QO10",
+      "bank_name": "",
+      "bank_code": "CREDIT_MUTUEL",
+      "bank_account_opening_date": "2002-11-30"
+    }
+  },
+  "application_status": {
+    "preapproval": {
+      "preapproval_status": "pre_approved"
+    },
+    "granting": {
+      "decision_status": "granted",
+      "decision_reason": "0"
+    },
+    "financial": {
+      "unpaid_amount": 9.019425673426661e+26
+    }
+  }
+}
