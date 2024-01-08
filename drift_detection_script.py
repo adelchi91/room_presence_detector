@@ -9,8 +9,8 @@ FEATURES_COVARIATE = ["Temperature",  "Humidity", "Light", "CO2", "HumidityRatio
 
 def import_data_new_data():
     # dataset with new data
-    #file_path = "./datatest2.txt"
-    file_path = "./datatraining.txt"
+    file_path = "./datatest2.txt"
+    #file_path = "./datatraining.txt"
     # check if file exists 
     if os.path.exists(file_path):
         print(f"The file {file_path} exists.")
@@ -46,4 +46,5 @@ if __name__ == '__main__':
     if answer=='Yes!':
         # scratch the training data with the updated data, so that a new model can be retrained
         df_merged.to_csv("datatraining.txt")
+        print("data_training.txt was modified")
     print('ALL good mate')
