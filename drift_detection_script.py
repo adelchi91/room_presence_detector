@@ -29,7 +29,7 @@ def import_original_data():
     return cd, df
 
 def check_covariate_drift(df_new, df_original, cd):
-    df_merged = pd.concat([df_original[FEATURES_COVARIATE],df_new[FEATURES_COVARIATE]]).copy()
+    df_merged = pd.concat([df_original[FEATURES_COVARIATE+["date"]],df_new[FEATURES_COVARIATE+["date"]]]).copy()
     preds = cd.predict(df_merged.to_numpy(copy=True))
     labels = ['No!', 'Yes!']
     print('Drift? {}'.format(labels[preds['data']['is_drift']]))
