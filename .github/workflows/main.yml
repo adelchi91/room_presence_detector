@@ -28,19 +28,27 @@ jobs:
 
       - name: Check Drift Status
         id: check_drift
-        run: echo "::set-output name=drift_detected::$(python -c "print('true' if '$(cat drift_detection_result.txt)' == 'Yes!' else 'false')")"
+        run: |
+          echo "drift_detected=$(python -c "print('true' if '$(cat drift_detection_result.txt)' == 'Yes!' else 'false')")" >> $GITHUB_ENV
+        # run: echo "::set-output name=drift_detected::$(python -c "print('true' if '$(cat drift_detection_result.txt)' == 'Yes!' else 'false')")"
 
       - name: Retrain Model (if drift detected)
-        if: steps.check_drift.outputs.drift_detected == 'true'
+        if: env.drift_detected == 'true'
+        # steps.check_drift.outputs.drift_detected == 'true'
         run: python model.py
 
       - name: Commit Changes
         run: |
           git config --global user.email "asta.adelchi@gmail.com"
           git config --global user.name "adelchi91"
-          git add .
-          git commit -m "Automated update due to drift detection"
-          git push
+          # Check if there are changes before committing
+          if [[ -n $(git diff --exit-code) ]]; then
+            git add .
+            git commit -m "Automated update due to drift detection"
+            git push
+          else
+            echo "No changes detected. Skipping commit."
+          fi
 
       - name: Build and Push Docker Image
         run: |
