@@ -46,7 +46,7 @@ jobs:
             git add .
             git commit -m "Automated update due to drift detection"
             git push https://github.com/adelchi91/room_presence_detector.git
-            # git push https://adelchi91:${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}@github.com/adelchi91/room_presence_detector.git
+            # git push https://adelchi91:${{ secrets.GITHUB_TOKEN }}@github.com/adelchi91/room_presence_detector.git
           else
             echo "No changes detected. Skipping commit."
           fi
