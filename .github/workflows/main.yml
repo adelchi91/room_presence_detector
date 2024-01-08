@@ -51,8 +51,11 @@ jobs:
           fi
 
       - name: Build and Push Docker Image
+        if: env.drift_detected == 'true'
         run: |
           docker build -t testing_image -f Dockerfile .
           docker tag testing_image adelchijacques/room_presence_classifier:room_presence_new
           docker login -u adelchijacques -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push adelchijacques/room_presence_classifier:room_presence_new
+        else:
+          run: echo "No drift detected. Skipping Docker image push."
