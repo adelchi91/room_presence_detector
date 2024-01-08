@@ -57,5 +57,3 @@ jobs:
           docker tag testing_image adelchijacques/room_presence_classifier:room_presence_new
           docker login -u adelchijacques -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push adelchijacques/room_presence_classifier:room_presence_new
-        else:
-          run: echo "No drift detected. Skipping Docker image push."
