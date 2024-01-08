@@ -9,8 +9,8 @@ FEATURES_COVARIATE = ["Temperature",  "Humidity", "Light", "CO2", "HumidityRatio
 
 def import_data_new_data():
     # dataset with new data
-    #file_path = "./datatest2.txt"
-    file_path = "./datatraining.txt"
+    file_path = "./datatest2.txt" # then drift
+    #file_path = "./datatraining.txt" # then no-drift
     # check if file exists 
     if os.path.exists(file_path):
         print(f"The file {file_path} exists.")
