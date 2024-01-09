@@ -58,3 +58,19 @@ jobs:
           docker tag testing_image adelchijacques/room_presence_classifier:room_presence_new
           docker login -u adelchijacques -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push adelchijacques/room_presence_classifier:room_presence_new
+
+      - name: Deploy to AWS ECS
+        if: env.drift_detected == 'true'
+        uses: aws-actions/setup-ecs@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1  
+          ecs-cluster: room_detection_cluster  # Replace with your ECS cluster name
+          app-name: room_detection_task  # 
+          container-image-name: adelchijacques/room_presence_classifier:room_presence_new
+
+      # haven't created an ECS service separately, you can use the aws ecs run-task command to run a one-off task 
+      - name: Run ECS Task
+        if: env.drift_detected == 'true'
+        run: aws ecs run-task --cluster room_detection_cluster --task-definition room_detection_task

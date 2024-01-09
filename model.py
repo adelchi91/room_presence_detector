@@ -47,11 +47,11 @@ def cross_validation(X_train, y_train):
 if __name__ == '__main__':
     # import data
     X_train, y_train = import_data()
-    # cross-validation 
-    cv = cross_validation(X_train, y_train)
-    # save best model
-    filename = 'classification_model.joblib'
-    dump(cv.best_estimator_, filename)
+    # # cross-validation 
+    # cv = cross_validation(X_train, y_train)
+    # # save best model
+    # filename = 'classification_model.joblib'
+    # dump(cv.best_estimator_, filename)
     print('Hello - all good my friend')
 
 
