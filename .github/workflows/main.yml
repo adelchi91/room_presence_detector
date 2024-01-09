@@ -73,4 +73,4 @@ jobs:
       # haven't created an ECS service separately, you can use the aws ecs run-task command to run a one-off task 
       - name: Run ECS Task
         if: env.drift_detected == 'true'
-        run: aws ecs run-task --cluster room_detection_cluster --task-definition room_detection_task
+        run: aws ecs run-task --cluster room_detection_cluster --task-definition room_detection_task --region eu-west-1 
