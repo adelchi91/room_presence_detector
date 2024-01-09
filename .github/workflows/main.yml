@@ -70,15 +70,42 @@ jobs:
           app-name: room_detection_task  # 
           container-image-name: adelchijacques/room_presence_classifier:room_presence_new
 
-      - name: Create task
+      - name: Create ECS Task Definition for Fargate
         if: env.drift_detected == 'true'
         run: |
           aws ecs register-task-definition \
-            --container-definitions '[{"name":"room_presence_classifier","image":"adelchijacques/room_presence_classifier:room_presence_new","memory":512}]' \
+            --family room_detection_task \
+            --requires-compatibilities FARGATE \
+            --cpu 256 \
+            --memory 512 \
+            --execution-role-arn arn:aws:iam::123456789012:role/ecsTaskExecutionRole \
+            --task-role-arn arn:aws:iam::123456789012:role/your-task-role-arn \
+            --container-definitions '[{
+              "name": "room_presence_classifier",
+              "image": "adelchijacques/room_presence_classifier:room_presence_new",
+              "memory": 512,
+              "cpu": 256,
+              "essential": true,
+              "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                  "awslogs-group": "/ecs/room_presence_classifier",
+                  "awslogs-region": "eu-west-1",
+                  "awslogs-stream-prefix": "ecs"
+                }
+              }
+            }]'\
             --family room_detection_task
 
-      # haven't created an ECS service separately, you can use the aws ecs run-task command to run a one-off task 
-      - name: Run ECS Task
+      # aws ecs register-task-definition \
+      #   --container-definitions '[{"name":"room_presence_classifier","image":"adelchijacques/room_presence_classifier:room_presence_new","memory":512}]' \
+      #   --family room_detection_task
+
+      # # haven't created an ECS service separately, you can use the aws ecs run-task command to run a one-off task 
+      # - name: Run ECS Task
+      #   if: env.drift_detected == 'true'
+      #   run: | 
+      #     aws ecs run-task --cluster room_detection_cluster --task-definition room_detection_task --region eu-west-1 
+      - name: Deploy ECS Service for Fargate
         if: env.drift_detected == 'true'
-        run: | 
-          aws ecs run-task --cluster room_detection_cluster --task-definition room_detection_task --region eu-west-1 
+        run: aws ecs update-service --cluster room_detection_cluster --service room_detection_service --task-definition room_detection_task:latest
