@@ -73,7 +73,9 @@ jobs:
       - name: Create task
         if: env.drift_detected == 'true'
         run: |
-          aws ecs register-task-definition --container-definitions '[{"name":"room_presence_classifier","image":"adelchijacques/room_presence_classifier:room_presence_new"}]'  --family room_detection_task
+          aws ecs register-task-definition \
+            --container-definitions '[{"name":"room_presence_classifier","image":"adelchijacques/room_presence_classifier:room_presence_new","memory":512}]' \
+            --family room_detection_task
 
       # haven't created an ECS service separately, you can use the aws ecs run-task command to run a one-off task 
       - name: Run ECS Task
