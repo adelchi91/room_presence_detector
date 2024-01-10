@@ -107,6 +107,27 @@ jobs:
       #   if: env.drift_detected == 'true'
       #   run: | 
       #     aws ecs run-task --cluster room_detection_cluster --task-definition room_detection_task --region eu-west-1 
+
+      # - name: Create ECS Service for Fargate
+      #     if: env.drift_detected == 'true'
+      #     run: |
+      #       CLUSTER_NAME="room_detection_cluster"
+      #       SERVICE_NAME="room_detection_service"
+      #       TASK_DEFINITION="room_detection_task"  # Replace with your actual task definition
+
+      #       # Check if the service already exists
+      #       if ! aws ecs describe-services --cluster "$CLUSTER_NAME" --services "$SERVICE_NAME" --query 'services' --output text; then
+      #         # If the service doesn't exist, create it
+      #         aws ecs create-service \
+      #           --cluster room_detection_cluster \
+      #           --service-name custom_service_name \
+      #           --task-definition room_detection_task \
+      #           --desired-count 1
+      #       else
+      #         echo "Service $SERVICE_NAME already exists."
+      #       fi
+
+
       - name: Deploy ECS Service for Fargate
         if: env.drift_detected == 'true'
-        run: aws ecs update-service --cluster room_detection_cluster --service room_detection_service --task-definition room_detection_task:latest
+        run: aws ecs update-service --cluster room_detection_cluster --service custom_service_name --task-definition room_detection_task
