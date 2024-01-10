@@ -86,6 +86,7 @@ jobs:
               "memory": 512,
               "cpu": 256,
               "essential": true,
+              "networkMode": "awsvpc",
               "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
