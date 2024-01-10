@@ -59,7 +59,7 @@ jobs:
           docker login -u adelchijacques -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push adelchijacques/room_presence_classifier:room_presence_new
 
-      - name: Deploy to AWS ECS
+      - name: Configure AWS credentials
         if: env.drift_detected == 'true'
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -70,6 +70,7 @@ jobs:
           app-name: room_detection_task  # 
           container-image-name: adelchijacques/room_presence_classifier:room_presence_new
 
+      #             --task-role-arn arn:aws:iam::123456789012:role/your-task-role-arn \
       - name: Create ECS Task Definition for Fargate
         if: env.drift_detected == 'true'
         run: |
@@ -78,8 +79,7 @@ jobs:
             --requires-compatibilities FARGATE \
             --cpu 256 \
             --memory 512 \
-            --execution-role-arn arn:aws:iam::123456789012:role/ecsTaskExecutionRole \
-            --task-role-arn arn:aws:iam::123456789012:role/your-task-role-arn \
+            --execution-role-arn arn:aws:iam::381492110778:role/ecsTaskExecutionRole \
             --container-definitions '[{
               "name": "room_presence_classifier",
               "image": "adelchijacques/room_presence_classifier:room_presence_new",
