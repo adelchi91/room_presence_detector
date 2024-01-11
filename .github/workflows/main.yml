@@ -73,17 +73,17 @@ jobs:
       - name: Create ECS Cluster for Fargate
         if: env.drift_detected == 'true'
         run: |
-        aws ecs create-cluster --cluster-name room_detection_cluster
+          aws ecs create-cluster --cluster-name room_detection_cluster
 
       - name: Create ECS task definition for Fargate
         if: env.drift_detected == 'true'
         run: |
-        aws ecs register-task-definition --cli-input-json file://.github/workflows/fargate_task_definition.json
+          aws ecs register-task-definition --cli-input-json file://.github/workflows/fargate_task_definition.json
 
       - name: Create and deploy ECS Service for Fargate
         if: env.drift_detected == 'true'
         run: |
-        aws ecs create-service --cluster room_detection_cluster --service-name room_detection_service --task-definition room_detection_task --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-0cea37d63b492f3c2],assignPublicIp=ENABLED}"
+          aws ecs create-service --cluster room_detection_cluster --service-name room_detection_service --task-definition room_detection_task --desired-count 1 --launch-type "FARGATE" --network-configuration "awsvpcConfiguration={subnets=[subnet-0cea37d63b492f3c2],assignPublicIp=ENABLED}"
 
 
 
