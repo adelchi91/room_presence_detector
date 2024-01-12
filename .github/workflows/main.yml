@@ -99,10 +99,17 @@ jobs:
               --network-configuration "awsvpcConfiguration={subnets=[subnet-0cea37d63b492f3c2],assignPublicIp=ENABLED}"
           else
             # If the service already exists, update it
-            aws ecs update-service \
+            # aws ecs update-service \
+            #   --cluster "$CLUSTER_NAME" \
+            #   --service "$SERVICE_NAME" \
+            #   --task-definition "$TASK_DEFINITION"
+            aws ecs create-service \
               --cluster "$CLUSTER_NAME" \
-              --service "$SERVICE_NAME" \
-              --task-definition "$TASK_DEFINITION"
+              --service-name "$SERVICE_NAME" \
+              --task-definition "$TASK_DEFINITION" \
+              --desired-count 1 \
+              --launch-type "FARGATE" \
+              --network-configuration "awsvpcConfiguration={subnets=[subnet-0cea37d63b492f3c2],assignPublicIp=ENABLED}"  
           fi
 
 
