@@ -32,8 +32,13 @@ jobs:
           echo "drift_detected=$(python -c "print('true' if '$(cat drift_detection_result.txt)' == 'Yes!' else 'false')")" >> $GITHUB_ENV
         # run: echo "::set-output name=drift_detected::$(python -c "print('true' if '$(cat drift_detection_result.txt)' == 'Yes!' else 'false')")"
 
+      - name: Check Drift Script Result
+        id: check_drift
+        run: |
+          echo "retraining=$(python -c "print('true' if '$(cat retraining_result.txt)' == 'Yes!' else 'false')")" >> $GITHUB_ENV
+
       - name: Retrain Model (if drift detected)
-        if: env.drift_detected == 'true'
+        if: env.retraining == 'true'
         # steps.check_drift.outputs.drift_detected == 'true'
         run: python model.py
 
