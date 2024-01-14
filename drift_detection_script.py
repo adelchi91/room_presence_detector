@@ -83,7 +83,7 @@ if __name__ == '__main__':
     answer_drift_covariate, df_merged = check_covariate_drift(df_new, df_original, cd)
     answer_drift_predictions = check_predictions_drift(df_new, df_original, model)
     
-    result_retraining = "drift_detection_result.txt"
+    result_retraining = "retraining_result.txt"
     with open(result_retraining, "w") as result_file:
             result_file.write('No!')
     # check if there was a drift 
