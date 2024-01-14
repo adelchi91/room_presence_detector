@@ -57,7 +57,7 @@ jobs:
 
 
       - name: Build and Push Docker Image
-        if: env.drift_detected == 'true'
+        if: env.retraining == 'true'
         run: |
           docker build -t testing_image -f Dockerfile .
           docker tag testing_image adelchijacques/room_presence_classifier:room_presence_new
@@ -65,7 +65,7 @@ jobs:
           docker push adelchijacques/room_presence_classifier:room_presence_new
 
       - name: Configure AWS credentials
-        if: env.drift_detected == 'true'
+        if: env.retraining == 'true'
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -76,17 +76,17 @@ jobs:
           container-image-name: adelchijacques/room_presence_classifier:room_presence_new
 
       - name: Create ECS Cluster for Fargate
-        if: env.drift_detected == 'true'
+        if: env.retraining == 'true'
         run: |
           aws ecs create-cluster --cluster-name room_detection_cluster
 
       - name: Create ECS task definition for Fargate
-        if: env.drift_detected == 'true'
+        if: env.retraining == 'true'
         run: |
           aws ecs register-task-definition --cli-input-json file://.github/workflows/fargate_task_definition.json
 
       - name: Create and deploy ECS Service for Fargate
-        if: env.drift_detected == 'true'
+        if: env.retraining == 'true'
         run: |
           CLUSTER_NAME="room_detection_cluster"
           SERVICE_NAME="room_detection_service"
