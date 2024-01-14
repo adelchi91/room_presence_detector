@@ -33,7 +33,7 @@ jobs:
         # run: echo "::set-output name=drift_detected::$(python -c "print('true' if '$(cat drift_detection_result.txt)' == 'Yes!' else 'false')")"
 
       - name: Check Drift Script Result
-        id: check_drift
+        id: check_drift_result
         run: |
           echo "retraining=$(python -c "print('true' if '$(cat retraining_result.txt)' == 'Yes!' else 'false')")" >> $GITHUB_ENV
 
