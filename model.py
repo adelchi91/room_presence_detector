@@ -54,14 +54,6 @@ def cross_validation(X_train, y_train):
     cv.fit(X_train, y_train)
     return cv
 
-def check_auc(clf, df_val, dataset="validation"):
-    y_probabilities = clf.predict_proba(df_val[FEATURES_COVARIATE])[:, 1]
-    y_test = df_val[TARGET]
-    fpr, tpr, _ = roc_curve(y_test, y_probabilities)
-    roc_auc = auc(fpr, tpr)
-    print(f"AUC {dataset}={roc_auc}")
-    return roc_auc
-
 def performance_and_graphs(df, clf):
     y = df["Occupancy"]
     y_pred = clf.predict_proba(df[FEATURES_COVARIATE])[:, 1]

@@ -6,6 +6,8 @@ import joblib
 import uvicorn
 from fastapi import FastAPI
 from typing import List
+from fastapi import HTTPException
+
 
 
 FEATURES_COVARIATE = ["Temperature", "Humidity", "Light", "CO2", "HumidityRatio"]
