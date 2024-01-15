@@ -60,6 +60,7 @@ jobs:
         if: env.retraining == 'true'
         run: |
           docker build -t testing_image -f Dockerfile .
+          # docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
           docker tag testing_image adelchijacques/room_presence_classifier:room_presence_new
           docker login -u adelchijacques -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push adelchijacques/room_presence_classifier:room_presence_new
@@ -80,13 +81,52 @@ jobs:
         run: |
           aws ecs create-cluster --cluster-name room_detection_cluster
 
+
+      # AWS Fargate is often referred to as a "serverless compute engine for containers" because it allows you to run containers
+      # without managing the underlying infrastructure, server provisioning, or scaling.
+      # Developers can focus on defining and running containerized applications without the need to worry about the details of server
+      # provisioning, scaling, or management, thus simplifying the deployment and operational aspects of containerized workloads.
       - name: Create ECS task definition for Fargate
         if: env.retraining == 'true'
+        # Description of the json file in the run command below:
+        # family: Organizes task definitions into groups, allowing for better management of different versions or purposes.
+        # executionRoleArn: Specifies the IAM role that grants permissions for ECS tasks to interact with other AWS services.
+        # networkMode: Defines the networking mode for the task. In Fargate, awsvpc is commonly used for better isolation and security.
+        # - family:
+        #   Purpose: The family parameter is used to identify the family name for the task definition. 
+        #            A family groups multiple revisions of a task definition together.
+        #   Explanation: The family is a way to categorize different versions or revisions of a task definition
+        #                that share a common purpose or application. It allows you to organize and manage revisions of a task
+        #                definition in a more structured manner. For example, you might have a family for a web server, and each
+        #                revision within that family represents a different version of the web server task definition.
+        # - executionRoleArn:
+        #            Purpose: The executionRoleArn parameter specifies the Amazon Resource Name (ARN) of the IAM role that the
+        #                     Amazon ECS container agent and the Docker daemon can assume.
+        #            Explanation: The execution role grants necessary permissions for tasks running on ECS. It allows the ECS
+        #                         service to communicate with other AWS services or resources, such as pulling Docker images from
+        #                         Amazon ECR (Elastic Container Registry) or accessing data stored in an S3 bucket.
+        # - command:
+        #           The script creates an HTML file with a congratulatory message and then starts the Apache HTTP server in the
+        #           foreground. The Apache server will serve the HTML content when accessed.
+        #           This setup is often used as a placeholder or default content for a web server running in a container.
+        # - networkMode Parameter:
+        #           Purpose: The networkMode parameter specifies the networking mode to use for the task. In Fargate, the awsvpc mode
+        #           is commonly used.
+        #           Explanation: The networking mode determines how networking is configured for containers within the task. 
+        #           awsvpc (Amazon VPC) mode provides each task with its own network namespace, including its own elastic network interface (ENI).
+        #           This mode is recommended for Fargate tasks as it offers better isolation and security.
+        # - essential: Indicates whether the task should stop if the container fails.
         run: |
           aws ecs register-task-definition --cli-input-json file://.github/workflows/fargate_task_definition.json
 
       - name: Create and deploy ECS Service for Fargate
         if: env.retraining == 'true'
+        # --desired-count 1: Sets the desired number of tasks to run in the service. In this case, it's set to 1.
+        # --network-configuration: the awsvpcConfiguration part, defines how the ECS service interacts with the network:
+        #     - It specifies the Virtual Private Cloud (VPC) configuration, indicating the overall networking setup for the
+        #       ECS service.
+        #     - It identifies the specific subnet within the VPC where the tasks associated with the ECS service will be launched.
+        #     - It enables the assignment of public IP addresses to the tasks, allowing them to communicate with the internet.
         run: |
           CLUSTER_NAME="room_detection_cluster"
           SERVICE_NAME="room_detection_service"
