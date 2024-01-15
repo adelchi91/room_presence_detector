@@ -89,13 +89,13 @@ if __name__ == '__main__':
     # check if there was a drift 
     if (answer_drift_covariate=='Yes!') | (answer_drift_predictions=='Yes'):
         # check if model performance is drifting
-        if performance_drift>=MODEL_DRIFT_TOL:
+        # if performance_drift>=MODEL_DRIFT_TOL:
         # Save the drift detection result to a file
-            with open(result_retraining, "w") as result_file:
-                result_file.write('Yes!')
-            # scratch the training data with the updated data, so that a new model can be retrained
-            df_merged.to_csv("datatraining.txt")
-            print("data_training.txt was modified")
+        with open(result_retraining, "w") as result_file:
+            result_file.write('Yes!')
+        # scratch the training data with the updated data, so that a new model can be retrained
+        df_merged.to_csv("datatraining.txt")
+        print("data_training.txt was modified")
     else:
         print('answer is no')
     print('ALL good mate')
