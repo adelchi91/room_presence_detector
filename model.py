@@ -115,10 +115,10 @@ if __name__ == '__main__':
     # import validation
     df_val = import_validation_data()
     # # cross-validation 
-    # cv = cross_validation(X_train, y_train)
-    # # save best model
-    # filename = 'classification_model.joblib'
-    # dump(cv.best_estimator_, filename)
+    cv = cross_validation(X_train, y_train)
+    # save best model
+    filename = 'classification_model.joblib'
+    dump(cv.best_estimator_, filename)
     # Stats
     model_fname_ = 'classification_model.joblib'
     clf = joblib.load(model_fname_)
