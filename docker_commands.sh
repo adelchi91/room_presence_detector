@@ -12,3 +12,5 @@ docker login
 docker push adelchijacques/room_presence_classifier:room_presence_clf_tag
 curl -v 0.0.0.0:8000
 docker logs dcf13be0c4df
+systemctl start docker
+docker run -p 8000:8000 adelchijacques/room_presence_classifier:room_presence_new
